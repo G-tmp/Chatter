@@ -21,12 +21,15 @@ public class ChatClient {
     private JFrame frame = new JFrame("Chatter");
     private JTextField textField = new JTextField(50);
     private JTextArea messageArea = new JTextArea(16,50);
+    private Font font=new Font("宋体",Font.PLAIN,20);
 
 
 
     public ChatClient(String serverAddress,int serverPort){
         this.serverAddress = serverAddress;
         this.serverPort = serverPort;
+        messageArea.setFont(font);
+        textField.setFont(font);
         textField.setEditable(false);
         messageArea.setEditable(false);
         frame.getContentPane().add(textField, BorderLayout.SOUTH);
