@@ -12,11 +12,11 @@ import java.util.concurrent.Executors;
 
 
 /**
- *  1.response "submit your name"
- *  2.response "name accepted:"+name  &&  broadcast "has joined"+name
+ *  1.response "SUBMIT YOUR NAME"
+ *  2.response "NAME ACCEPTED:"+name  &&  broadcast [MESSAGE] has joined"+name
  *  3.response ""
- *  4.broadcast message client input
- *  5.broadcast message who quit
+ *  4.broadcast [MESSAGE] client input
+ *  5.broadcast [MESSAGE] who quit
  */
 public class ChatServer {
 
@@ -75,7 +75,6 @@ public class ChatServer {
                 }
                 writers.add(out);
 
-
                 // receive message from this.client
                 while (true){
                     // message from this.client input
@@ -125,8 +124,9 @@ public class ChatServer {
         System.out.println("chat server is running...");
 
         try (ServerSocket socket = new ServerSocket(serverPort)){
-            while (true)
+            while (true) {
                 pool.execute(new Handler(socket.accept()));
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
